@@ -62,7 +62,7 @@ innerHTML = productHtml;
 const addMessageTimeout ={};
 
 
-    function updateCartQuantity(){
+     function updateCartQuantity(){
 
         let cartQuantity = 0;
 
