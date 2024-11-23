@@ -115,3 +115,5 @@ document.querySelectorAll('.js-delete-link')
       fbrrnt
       ;
       function jsp(){}
+
+      function jsp3(){}
