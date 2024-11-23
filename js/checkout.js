@@ -112,6 +112,4 @@ document.querySelectorAll('.js-delete-link')
             console.log(cart);
         });
     });
-      fbrrnt
-      ;
       
