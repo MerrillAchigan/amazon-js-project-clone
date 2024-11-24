@@ -16,9 +16,9 @@
     export function addToCart(productId){
         let matchingItem;
 
-                cart.forEach(item=> {
-                    if(productId === item.productId){
-                        matchingItem = item;
+                cart.forEach(cartItem=> {
+                    if(productId === cartItem.productId){
+                        matchingItem = cartItem;
                     }
                 });
                 if(matchingItem){
@@ -58,4 +58,18 @@
             
             return cartQuantity;
         
+    }
+
+    export function updateQuantity(productId, newQuantity){
+        let matchingItem;
+
+        cart.forEach((cartItem) => {
+            if(productId === cartItem.quantity){
+                matchingItem = cartItem;
+            }
+        });
+
+        matchingItem.quantity = newQuantity;
+
+        saveToStorage();
     }
