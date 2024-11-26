@@ -24,6 +24,14 @@ export function renderOrderSummary(){
     
       const deliveryOption = getDeliveryOption(deliveryOptionId);
 
+      const today = dayjs();
+      const deliveryDate = today.add(
+        deliveryOption.deliveryDays,
+        'days'
+      );
+      const dateString = deliveryDate.format(
+        'dddd, MMMM D'
+      );
       //console.log(matchingProduct);
 
     cartSummaryHTML += `
