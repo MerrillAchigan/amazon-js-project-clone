@@ -10,5 +10,5 @@ describe('test suite : formatCurrency', () => {
     });
     it('round up to the nearest up', () =>{
         expect(formatCurrency(2000.5)).toEqual('20.01');
-    })
+    });
 })
