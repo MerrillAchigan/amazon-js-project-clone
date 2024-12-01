@@ -30,16 +30,16 @@ products.forEach((product) =>{
 
                 <div class="product-quantity-container">
                     <select class="js-quantity-selector-${product.id}">
-                    <option selected value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
+                        <option selected value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
                     </select>
                 </div>
 
@@ -74,33 +74,28 @@ document.querySelectorAll('.js-add-to-cart')
         button.addEventListener('click', () => {
             const productId = button.dataset.productId;
 
-            addToCart(productId);
-            updateCartQuantity();
-
+            // Get the selected quantity
             const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
-
             const quantity = Number(quantitySelector.value);
 
-            const addMessage = document.querySelector(
-                `.js-added-to-cart-${productId}`);
-           
+            // Add product to cart with the selected quantity
+            addToCart(productId, quantity);
+            updateCartQuantity();
 
-            document.querySelectorAll('.js-add-to-cart')
-            .forEach((button) => {
-                button.addEventListener('click', () => {
-                    addMessage.classList.add('added-to-cart-visible');
-                    const previousTimeoutId = addMessageTimeout[productId];
-                    if (previousTimeoutId){
-                        clearTimeout(previousTimeoutId);
-                    }
-                    const timeoutId = setTimeout(() =>{
-                        addMessage.classList.remove('added-to-cart-visible');
-                    }, 2000) ;
-                    addMessageTimeout[productId] = timeoutId;
-                })
-            })
-            
-        }) 
-    })
+            // Show the "Added to Cart" message
+            const addMessage = document.querySelector(`.js-added-to-cart-${productId}`);
+            addMessage.classList.add('added-to-cart-visible');
+
+            // Handle timeout for hiding the message
+            const previousTimeoutId = addMessageTimeout[productId];
+            if (previousTimeoutId) {
+                clearTimeout(previousTimeoutId);
+            }
+            const timeoutId = setTimeout(() => {
+                addMessage.classList.remove('added-to-cart-visible');
+            }, 2000);
+            addMessageTimeout[productId] = timeoutId;
+        });
+    });
 
    
